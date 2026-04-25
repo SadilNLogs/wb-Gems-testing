@@ -3,12 +3,11 @@ name: Gamage-Gems-WhatsApp-Bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */5 * * *'
+    - cron: '0 */5 * * *' 
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -17,12 +16,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Start Gamage-Gems Bot
+      - name: Start AI Bot
         env:
           FIREBASE_URL: ${{ secrets.FIREBASE_URL }}
-        run: node index.js
+        run: npm start
